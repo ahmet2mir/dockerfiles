@@ -1,0 +1,20 @@
+db:
+  image: ahmet2mir/mysql
+  ports:
+    - "3306:3306"
+leed:
+  image: ahmet2mir/leed
+  environment:
+    DB_NAME: "leednew"
+    LEED_USER: "admin"
+    LEED_PWD: "PAAAS"
+    LANG: "fr"
+    # without db image use this lines
+    #DB_1_PORT_3306_TCP_ADDR: "172.17.42.1"
+    #DB_1_PORT_3306_TCP_PORT: "3306"
+    #DB_1_DB_USER: "user"
+    #DB_1_DB_USER_PWD: "password"
+  ports:
+    - "8080:80"
+  links:
+    - db
