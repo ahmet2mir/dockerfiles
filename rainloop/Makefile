@@ -7,6 +7,6 @@ clean:
 log:
 	docker logs -f rainloop
 port:
-	docker port rainloop 22
-ssh:
-	ssh rainloop.dock
+	docker port rainloop 80
+enter:
+	docker exec -it rainloop /bin/bash

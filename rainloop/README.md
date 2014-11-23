@@ -1,10 +1,10 @@
 Docker Rainloop
-=============
+===============
 
 Rainloop web client Docker image using nginx.
 
 How to use
--------
+----------
 
 	docker pull ahmet2mir/rainloop
 
@@ -28,11 +28,21 @@ You can use the Makefile to run some commands and build yours.
 	make build
 	make run
 	make clean
+	make enter
 
-To connect to the conainer, the base image is https://github.com/ahmet2mir/docker-debian, check it.
+Troubleshooting
+---------------
+
+Since Docker 1.3 you can directly use docker exec
+
+	docker exec -it rainloop /bin/bash
+
+Or 
+
+	make enter
 
 Backup
------------
+------
 
 Data are stored in /webapps/rainloop/data, to externalize it, use -v option and sync data inside container OR you can run a first "dummy" container, copy data localy, destroy it, and re-run with -v.
 
