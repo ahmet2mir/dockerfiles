@@ -18,15 +18,15 @@ You can use the fig http://fig.sh file and run it with a database from another i
 
     fig -p myproject up -d
 
-If you need to enter in the app, use nsenter https://github.com/jpetazzo/nsenter and the script docker-enter
+If you need to enter in the app, use docker exec since Docker 1.3 https://github.com/ahmet2mir/docker-memo
 
-    docker-enter leed
+    docker exec -it leed /bin/bash
     or
-    docker-enter leed_leed_1
+    docker exec -it leed_leed_1 /bin/bash
 
 In Database
 
-    docker-enter leed_db_1
+    docker exec -it leed_db_1 /bin/bash
 
 License
 -------

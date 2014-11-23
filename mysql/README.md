@@ -32,10 +32,10 @@ Please change it (install mysql client first or use something like SQLBuddy or t
 Enter in image
 --------------
 
-If you need to enter in the app, use nsenter https://github.com/jpetazzo/nsenter and the script docker-enter
+If you need to enter in the app, use docker exec since Docker 1.3 https://github.com/ahmet2mir/docker-memo
 
-    docker-enter leed
-
+    docker exec -it mysql /bin/bash
+    
 
 License
 -------
