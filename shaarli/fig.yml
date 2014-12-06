@@ -1,0 +1,10 @@
+shaarli:
+  image: ahmet2mir/shaarli
+  environment:
+    SHAARLI_USER: "admin"
+    SHAARLI_PWD: "admin"
+    SHAARLI_CONTINENT: "Europe"
+    SHAARLI_CITY: "Paris"
+    SHAARLI_TITLE: "My Amazing Shaarli"
+  ports:
+    - "8081:80"

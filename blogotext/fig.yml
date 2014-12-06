@@ -1,0 +1,9 @@
+blogotext:
+  image: ahmet2mir/blogotext
+  environment:
+    BLOGO_USER: "admin"
+    BLOGO_PWD: "StrongP4ssw0r$~d"
+    BLOGO_URL: "http://localhost/"
+    LANG: "fr"
+  ports:
+    - "8082:80"
