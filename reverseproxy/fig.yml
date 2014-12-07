@@ -1,0 +1,4 @@
+reverseproxy:
+  image: ahmet2mir/reverseproxy
+  ports:
+    - "443:443"
