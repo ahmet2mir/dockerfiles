@@ -1,3 +1,4 @@
+all: clean build run
 build:
 	docker build -t ahmet2mir/reverseproxy .
 run:
