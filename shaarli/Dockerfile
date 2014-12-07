@@ -10,7 +10,7 @@ RUN echo "deb http://ftp.fr.debian.org/debian $RELEASE main contrib non-free" > 
     && echo "deb http://security.debian.org/ $RELEASE/updates main contrib non-free" >> /etc/apt/sources.list \
     && apt-get update 
 
-RUN	apt-get install -y --no-install-recommends apache2 php5 git ca-certificates
+RUN	apt-get install -y --no-install-recommends apache2 php5 git ca-certificates curl
 
 RUN rm -rf /var/www \
 	&& git clone https://github.com/shaarli/Shaarli.git /var/www \

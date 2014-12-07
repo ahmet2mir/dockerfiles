@@ -14,7 +14,6 @@ then
     /usr/sbin/apache2ctl start
     
     echo "************ Make Install"
-    echo "setlogin=$SHAARLI_USER&setpassword=$SHAARLI_PWD&continent=$SHAARLI_CONTINENT&city=$SHAARLI_CITY&title=$SHAARLI_TITLE&Save=Save+config"
     curl -iL -XPOST "http://localhost/index.php" -d "setlogin=$SHAARLI_USER&setpassword=$SHAARLI_PWD&continent=$SHAARLI_CONTINENT&city=$SHAARLI_CITY&title=$SHAARLI_TITLE&Save=Save+config"
 
     echo "************ Stop apache"
@@ -24,5 +23,6 @@ then
     echo "done" > /.docker_status
 fi
 
+sleep 5
 echo "************ Finished. Running Apache in FOREGROUND"
 exec /usr/sbin/apache2ctl -D FOREGROUND
