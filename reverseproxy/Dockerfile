@@ -24,6 +24,6 @@ RUN chmod +x /webapps/scripts/* \
 
 CMD ["/usr/sbin/nginx","-c","/webapps/conf/nginx.conf"]
 
-EXPOSE 443
+EXPOSE 80 443
 
 

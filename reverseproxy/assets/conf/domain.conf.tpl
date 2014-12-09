@@ -1,6 +1,6 @@
 server {
-
-    listen 443 ssl;
+    listen 80;
+    listen 443 default ssl;
     server_name {{SERVER_NAME}};
 
     ssl_certificate    /webapps/ssl/{{SERVER_NAME}}.crt;
