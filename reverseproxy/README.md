@@ -1,7 +1,7 @@
 Docker Reverse Proxy
 ====================
 
-Reverse proxy using nginx. This allow you to use bot of root and path reverse proxy like http://mydomain/mypath
+Reverse proxy using nginx. This allow you to use both of root and path reverse proxy like https://mydomain/mypath. You can use HTTP and HTTPS
 
 How to use
 ----------
@@ -10,9 +10,17 @@ Start it:
 
 	docker run --name reverseproxy -d -p 443:443 ahmet2mir/reverseproxy
 
-or with fig
+or -p 80:80 or both.
 
-	fig up -p myproject -d
+Use your own SSL certificate:
+
+	docker run --name reverseproxy -d -p 443:443 -v /my/ssl/path:/webapps/ssl ahmet2mir/reverseproxy
+	
+Then copy you <domain>.crt and <domain>.key in /my/ssl/path. When you need to change your cert, reload nginx (see after)
+
+Save logs:
+
+	docker run --name reverseproxy -d -p 443:443 -v /my/ssl/path:/webapps/ssl -v /my/logs/path:/webapps/logs ahmet2mir/reverseproxy
 
 Add a domain:
 
@@ -42,6 +50,9 @@ Then open
 
 	https://myserver.lan/path
 
+Reload nginx
+
+	docker exec reverseproxy nginx -s reload
 
 Full Example
 ------------
@@ -51,7 +62,7 @@ Reverse a [blogotext](https://github.com/ahmet2mir/dockerfiles/tree/master/blogo
 	docker run --name reverseproxy -d -p 443:443 ahmet2mir/reverseproxy
 	docker run --name shaarli -d ahmet2mir/shaarli
 	docker run --name blogotext -d ahmet2mir/blogotext
-	docker run --name couchdb -d ahmet2mir/couchdb
+	docker run --name couchdb -d fedora/couchdb
 
 	docker exec reverseproxy domain -a --hostname myserver.lan
 
@@ -75,9 +86,9 @@ Reverse a [blogotext](https://github.com/ahmet2mir/dockerfiles/tree/master/blogo
 
 Then visit:
 
-Blog: http://myserver.lan/
-Shaarli: http://myserver.lan/shaarli/
-Couchdb: http://myserver.lan/couchdb/
+Blog: https://myserver.lan/
+Shaarli: https://myserver.lan/shaarli/
+Couchdb: https://myserver.lan/couchdb/
 
 Troubleshooting
 ---------------
@@ -94,14 +105,31 @@ Data are stored in /webapps/
 * **cache**: all cached data
 * **conf**: nginx conf and server template
 * **site**: enabled sites
-* **scripts**: add_server.sh script linked to /usr/bin/add_server
-* **logs**: sites logs
-* **ssl**: generated site certificates. Each site have their own certificate
+* **scripts**: path.sh and domain.sh scripts linked to /usr/bin/path and /usr/bin/domain
+* **logs**: domain and nginx logs
+* **ssl**: generated site certificates. Each domain have their own certificate
 
-Configuration
+Custom Configuration
 -------------
 
-Mount you data to /webapps and be sure that example.conf.tpl contains SERVER_NAME, SERVER_PROTOCOL, SERVER_PORT and SERVER_IP
+Only site and scripts folders need to be configured before running container.
+
+	cd /my/webapps
+	mkdir {cache,conf,site,scripts,logs,ssl}
+
+	git clone https://github.com/ahmet2mir/dockerfiles
+	cp dockerfiles/reverseproxy/assets/conf/* sites/
+	cp dockerfiles/reverseproxy/assets/scripts/* scripts/
+
+	# make you custom to nginx.conf
+
+	docker run --name reverseproxy -d -p 443:443 -v /my/path:/webapps ahmet2mir/reverseproxy
+
+Or edit fig.yml to point to your folder, then
+
+	fig -p myproject -d
+
+Have fun!
 
 License
 -------
