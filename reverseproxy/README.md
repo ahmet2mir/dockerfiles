@@ -107,28 +107,3 @@ License
 -------
 
 Apache 2 http://en.wikipedia.org/wiki/Apache_License
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-docker exec reverseproxy domain -a --hostname amazing.lan
-docker exec reverseproxy path -a --hostname amazing.lan --ip_address 172.17.0.201 --port 80 --protocol http --path shaarli
-docker exec reverseproxy path -a --hostname amazing.lan --ip_address 172.17.0.250 --port 5984 --protocol http --path couchdb
-docker exec reverseproxy path -a --hostname amazing.lan --ip_address 172.17.0.231 --port 80 --protocol http --path _root

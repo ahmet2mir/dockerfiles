@@ -17,7 +17,8 @@ RUN curl -R -L -O http://lehollandaisvolant.net/blogotext/blogotext.zip \
     && unzip blogotext.zip -d /tmp \
 	&& rm -rf /var/www \
 	&& mv /tmp/blogotext /var/www \
-	&& chmod 777 -R /var/www 
+	&& chmod 777 -R /var/www \
+	&& /bin/sed 's,AllowOverride None,AllowOverride All,g' -i /etc/apache2/sites-available/default
 
 COPY scripts/run.sh /run.sh
 RUN chmod +x /run.sh

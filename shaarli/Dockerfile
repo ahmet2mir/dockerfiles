@@ -14,7 +14,8 @@ RUN	apt-get install -y --no-install-recommends apache2 php5 git ca-certificates 
 
 RUN rm -rf /var/www \
 	&& git clone https://github.com/shaarli/Shaarli.git /var/www \
-	&& chmod 777 -R /var/www
+	&& chmod 777 -R /var/www \
+	&& /bin/sed 's,AllowOverride None,AllowOverride All,g' -i /etc/apache2/sites-available/default
 
 VOLUME /var/www
 
