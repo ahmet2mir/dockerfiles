@@ -3,6 +3,8 @@ Docker Reverse Proxy
 
 Reverse proxy using nginx. This allow you to use both of root and path reverse proxy like https://mydomain/mypath. You can use HTTP and HTTPS
 
+Since Docker 1.3 (use docker exec).
+
 How to use
 ----------
 
@@ -34,8 +36,6 @@ Add path
 	
 	 docker exec reverseproxy path -a --hostname myserver.lan --ip_address 172.17.0.231 --port 5984 --protocol http --path couchdb
 
-_root is reserved to root path
-
 Add root path
 	
 	 docker exec reverseproxy path -a --hostname myserver.lan --ip_address 172.17.0.231 --port 80 --protocol http --path _root
@@ -46,14 +46,14 @@ Delete path
 
 	docker exec reverseproxy path -d --hostname myserver.lan --path _root
 
-Then open
-
-	https://myserver.lan/path
-
 Reload nginx
 
 	docker exec reverseproxy nginx -s reload
 
+Troubleshooting
+
+	docker exec -it reverseproxy /bin/bash
+	
 Full Example
 ------------
 
@@ -86,16 +86,9 @@ Reverse a [blogotext](https://github.com/ahmet2mir/dockerfiles/tree/master/blogo
 
 Then visit:
 
-Blog: https://myserver.lan/
-Shaarli: https://myserver.lan/shaarli/
-Couchdb: https://myserver.lan/couchdb/
-
-Troubleshooting
----------------
-
-Since Docker 1.3 you can directly use docker exec
-
-	docker exec -it reverseproxy /bin/bash
+* Blog: https://myserver.lan/
+* Shaarli: https://myserver.lan/shaarli/
+* Couchdb: https://myserver.lan/couchdb/
 
 Backup
 ------
@@ -104,7 +97,7 @@ Data are stored in /webapps/
 
 * **cache**: all cached data
 * **conf**: nginx conf and server template
-* **site**: enabled sites
+* **sites**: enabled sites
 * **scripts**: path.sh and domain.sh scripts linked to /usr/bin/path and /usr/bin/domain
 * **logs**: domain and nginx logs
 * **ssl**: generated site certificates. Each domain have their own certificate
@@ -112,10 +105,10 @@ Data are stored in /webapps/
 Custom Configuration
 -------------
 
-Only site and scripts folders need to be configured before running container.
+Only sites and scripts folders need to be configured before running container.
 
 	cd /my/webapps
-	mkdir {cache,conf,site,scripts,logs,ssl}
+	mkdir {cache,conf,sites,scripts,logs,ssl}
 
 	git clone https://github.com/ahmet2mir/dockerfiles
 	cp dockerfiles/reverseproxy/assets/conf/* sites/
