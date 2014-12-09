@@ -19,8 +19,8 @@ RUN mkdir -p /webapps/sites /webapps/conf /webapps/logs \
 COPY assets/scripts /webapps/scripts
 COPY assets/conf /webapps/conf/
 RUN chmod +x /webapps/scripts/* \
-	&& ln -s /webapps/scripts/add_server.sh /usr/bin/add_server \
-	&& ln -s /webapps/scripts/add_path.sh /usr/bin/add_path
+	&& ln -s /webapps/scripts/domain.sh /usr/bin/domain \
+	&& ln -s /webapps/scripts/path.sh /usr/bin/path
 
 CMD ["/usr/sbin/nginx","-c","/webapps/conf/nginx.conf"]
 
