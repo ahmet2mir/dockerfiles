@@ -9,9 +9,9 @@ ES_SCHEME=${ES_SCHEME:-http}
 if [ ! -f /.docker_status ]
 then
 
-	sed 's,{{ES_HOST}},'"${ES_HOST}"',g' -i /webapps/kibana/config.js
-	sed 's,{{ES_PORT}},'"${ES_PORT}"',g' -i /webapps/kibana/config.js
-	sed 's,{{ES_SCHEME}},'"${ES_SCHEME}"',g' -i /webapps/kibana/config.js
+	sed 's,{{ ES_HOST }},'"${ES_HOST}"',g' -i /webapps/kibana/config.js
+	sed 's,{{ ES_PORT }},'"${ES_PORT}"',g' -i /webapps/kibana/config.js
+	sed 's,{{ ES_SCHEME }},'"${ES_SCHEME}"',g' -i /webapps/kibana/config.js
 
     echo "************ Create status file to be idempotent"
     echo "done" > /.docker_status
