@@ -1,4 +1,4 @@
-Docker Blogotext image
+Docker Pypiserver image
 =================
 
 This is a Debian based image with [Pypiserver](https://pypi.python.org/pypi/pypiserver#installation-and-usage-quickstart) listening on port 80. 
