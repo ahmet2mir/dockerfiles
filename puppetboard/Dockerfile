@@ -10,7 +10,7 @@ RUN echo "deb http://ftp.fr.debian.org/debian $RELEASE main contrib non-free" > 
     && echo "deb http://security.debian.org/ $RELEASE/updates main contrib non-free" >> /etc/apt/sources.list \
     && apt-get update 
 
-RUN apt-get install -y --no-install-recommends python python-pip git gunicorn
+RUN apt-get install -y --no-install-recommends python python-pip git gunicorn ca-certificates
 
 RUN mkdir -p /webapps/logs/puppetboard \
     && git clone https://github.com/puppet-community/puppetboard.git /webapps/puppetboard \
