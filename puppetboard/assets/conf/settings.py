@@ -1,0 +1,15 @@
+LOGLEVEL = 'info'
+PUPPETDB_HOST = str("{{ PUPPETDB_HOST }}")
+PUPPETDB_PORT = int("{{ PUPPETDB_PORT }}")
+PUPPETDB_SSL_VERIFY = bool("{{ PUPPETDB_VERIFY }}")
+
+if PUPPETDB_SSL_VERIFY:
+    PUPPETDB_KEY = "/webapps/puppetboard/ssl/puppetboard.pem"
+    PUPPETDB_CERT = "/webapps/puppetboard/ssl/puppetboard.crt"
+
+PUPPETDB_TIMEOUT = 20
+UNRESPONSIVE_HOURS = 3
+ENABLE_QUERY = True
+LOCALISE_TIMESTAMP = True
+PUPPETDB_EXPERIMENTAL = False
+REPORTS_COUNT = 10
