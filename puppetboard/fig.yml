@@ -1,9 +1,9 @@
-blogotext:
+puppetboard:
   image: ahmet2mir/puppetboard
   environment:
     PUPPETDB_HOST: "test.lan"
-    PUPPETDB_PORT: "8080"
-    PUPPETDB_VERIFY: True
+    PUPPETDB_PORT: "8081"
+    PUPPETDB_VERIFY: False
   ports:
     - "9090:9090"
   volumes:
