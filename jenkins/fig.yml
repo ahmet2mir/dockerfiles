@@ -1,0 +1,6 @@
+jenkins:
+    image: ahmet2mir/jenkins
+    ports:
+        - "8080:8080"
+    volumes:
+        - /tmp/data:/webapps/jenkins/data
