@@ -4,6 +4,7 @@ puppetboard:
     PUPPETDB_HOST: "test.lan"
     PUPPETDB_PORT: "8081"
     PUPPETDB_VERIFY: False
+    PUPPETBOARD_SETTINGS: /webapps/puppetboard/settings.py
   ports:
     - "9090:9090"
   volumes:

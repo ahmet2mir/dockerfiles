@@ -1,0 +1,10 @@
+geminabox:
+    image: ahmet2mir/geminabox
+    ports:
+        - "9292:9292"
+    environment:
+        USERNAME: "myuser"
+        PASSWORD: "mypassword"
+    volumes:
+        - /tmp/data:/webapps/geminabox/data
+        - /tmp/config:/webapps/geminabox/config
