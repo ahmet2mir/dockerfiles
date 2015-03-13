@@ -1,0 +1,30 @@
+postgres:
+    image: postgres
+    environment:
+        POSTGRES_USER: "puser"
+        POSTGRES_PASSWORD: "ppwd"
+    ports:
+        - "5432:5432"
+
+phppgadmin:
+    image: jacksoncage/phppgadmin
+    environment:
+        POSTGRES_HOST: "172.17.42.1"
+        POSTGRES_PORT: "5432"
+        POSTGRES_DEFAULTDB: "postgres"
+    ports:
+        - "80:80"
+
+booking:
+    image: ahmet2mir/booking-mvc
+    environment:
+        DB_HOST: "172.17.42.1"
+        DB_PORT: "5432"
+        DB_USER: "puser"
+        DB_PASSWORD: "ppwd"
+        DB_NAME: "postgres"
+
+        TOMCAT_USER: "tomcat"
+        TOMCAT_PASSWORD: "tomcat"
+    ports:
+        - "8080:8080"
