@@ -15,4 +15,6 @@ RUN apt-get install -y --no-install-recommends nginx supervisor
 
 RUN pip install --upgrade pip virtualenv gunicorn supervisor-stdout
 
+RUN mkdir /apps
+WORKDIR /apps
 EXPOSE 80
