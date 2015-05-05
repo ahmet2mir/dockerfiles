@@ -10,7 +10,7 @@ RUN echo "deb http://ftp.fr.debian.org/debian $RELEASE main contrib non-free" > 
     && echo "deb http://security.debian.org/ $RELEASE/updates main contrib non-free" >> /etc/apt/sources.list \
     && apt-get update 
 
-RUN apt-get install -y --no-install-recommends git python-dev python-pip
+RUN apt-get install -y --no-install-recommends git python-dev python-pip gcc build-essential
 RUN apt-get install -y --no-install-recommends nginx supervisor
 
 RUN pip install --upgrade pip virtualenv gunicorn supervisor-stdout
