@@ -11,7 +11,7 @@ RUN echo "deb http://ftp.fr.debian.org/debian $RELEASE main contrib non-free" > 
     && apt-get update 
 
 RUN apt-get install -y --no-install-recommends git python-dev python-pip gcc build-essential
-RUN apt-get install -y --no-install-recommends nginx supervisor
+RUN apt-get install -y --no-install-recommends nginx supervisor vim curl
 
 RUN pip install --upgrade pip virtualenv gunicorn supervisor-stdout
 
