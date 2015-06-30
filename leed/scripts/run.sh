@@ -46,7 +46,7 @@ then
         echo "CREATE DATABASE "$DB_NAME";" | mysql --user=$DB_USER --password=$DB_PWD --host=$DB_HOST --port=$DB_PORT
 
         echo "************ Make Install"
-        curl -iL -XPOST "http://localhost/install.php" -d "install_changeLngLeed=$LANG&root=http%3A%2F%2F0.0.0.0%3A81%2Fleed%2F&mysqlHost=$DB_HOST&mysqlLogin=$DB_USER&mysqlMdp=$DB_PWD&mysqlBase=$DB_NAME&mysqlPrefix=leed_&login=$LEED_USER&password=$LEED_PWD&installButton="
+        curl -iL -XPOST "http://localhost/install.php" -d "install_changeLngLeed=$LANG&root=http%3A%2F%2F0.0.0.0%3A81%2Fleed%2F&mysqlHost=$DB_HOST:$DB_PORT&mysqlLogin=$DB_USER&mysqlMdp=$DB_PWD&mysqlBase=$DB_NAME&mysqlPrefix=leed_&login=$LEED_USER&password=$LEED_PWD&installButton="
 
         echo "************ Stop apache"
         /usr/sbin/apache2ctl stop
