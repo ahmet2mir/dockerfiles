@@ -3,7 +3,7 @@
 DB_HOST=${DB_HOST:-localhost}
 DB_PORT=${DB_PORT:-3306}
 DB_USER=${DB_USER:-user}
-DB_PWD=${DB_1_ENV_DB_USER_PWD:-password}
+DB_PWD=${DB_PWD:-password}
 
 DB_NAME=${DB_NAME:-leed}
 LEED_USER=${LEED_USER:-admin}
