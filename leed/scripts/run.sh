@@ -32,7 +32,7 @@ then
     LIMIT=5
     RET=1
     until [ ${RET} -eq 0 ] || [ ${LIMIT} -eq 0 ]; do
-        mysql --user=$DB_USER --host=$DB_HOST --port=$DB_PORT --password=$DB_PWD > /dev/null 2>&1
+        mysql --user=$DB_USER --host=$DB_HOST --port=$DB_PORT --password=$DB_PWD -e "use $DB_NAME"  > /dev/null 2>&1
         RET=$?
         LIMIT=$(( LIMIT-1 ))
         echo "************ Unable to connect to MySQL server. Wait and Try 5 times (LIMIT=$LIMIT)"
