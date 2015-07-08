@@ -11,7 +11,7 @@ How to use
 
 The imade didn't provide the database, so use environment variables to run the app.
 
-    docker run -d -p 8080:8080 --name leed -e DB_HOST="172.17.42.1" -e DB_PORT="3306" -e DB_USER="user" -e DB_PWD="password" -e DB_NAME="leednew" -e LEED_USER="admin" -e LEED_PWD="PAAAS" -e LANG="fr" ahmet2mir/leed
+    docker run -d -p 80:80 --name leed -e DB_HOST="172.17.42.1" -e DB_PORT="3306" -e DB_USER="user" -e DB_PWD="password" -e DB_NAME="leednew" -e LEED_USER="admin" -e LEED_PWD="PAAAS" -e LANG="fr" ahmet2mir/leed
 
 
 You can use the fig http://fig.sh file and run it with a database from another image https://github.com/ahmet2mir/docker-mysql:

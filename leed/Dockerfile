@@ -13,8 +13,10 @@ RUN apt-get update
 
 RUN	apt-get install -y --no-install-recommends apache2 php5 php5-mysql git ca-certificates mysql-client curl
 
-RUN git clone https://github.com/ldleman/Leed.git /var/www/leed;\
-	chmod 777 -R /var/www/leed 
+RUN git clone https://github.com/ldleman/Leed.git /tmp/leed;\
+        rm /var/www/index.html;\
+        mv /tmp/leed/* /var/www;\
+	chmod 777 -R /var/www 
 
 COPY scripts/run.sh /run.sh
 RUN chmod +x /run.sh
