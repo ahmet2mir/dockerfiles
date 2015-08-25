@@ -1,20 +1,11 @@
-FROM debian:jessie
+FROM alpine:3.2
 MAINTAINER Ahmet Demir <ahmet2mir+github@gmail.com>
 
-ENV RELEASE jessie
-ENV DEBIAN_FRONTEND noninteractive
-ENV SHELL /bin/bash
-
-RUN echo "deb http://ftp.fr.debian.org/debian $RELEASE main contrib non-free" > /etc/apt/sources.list \
-    && echo "deb http://ftp.debian.org/debian/ $RELEASE-updates main contrib non-free" >> /etc/apt/sources.list \
-    && echo "deb http://security.debian.org/ $RELEASE/updates main contrib non-free" >> /etc/apt/sources.list \
-    && apt-get update 
-
-RUN apt-get install -y --no-install-recommends git python-dev python-pip gcc build-essential
-RUN apt-get install -y --no-install-recommends nginx supervisor vim curl
-
-RUN pip install --upgrade pip virtualenv gunicorn supervisor-stdout
-
+RUN apk add --update python openssl git
+RUN wget http://bootstrap.pypa.io/get-pip.py
+RUN python get-pip.py
+RUN pip install --upgrade pip virtualenv gunicorn setuptools
+RUN rm -rf /var/cache/apk/*
 RUN mkdir /apps
+
 WORKDIR /apps
-EXPOSE 80
