@@ -1,6 +1,13 @@
-FROM python:2.7
+FROM alpine:3.2
+MAINTAINER Ahmet Demir <ahmet2mir+github@gmail.com>
 
-RUN pip install pyinotify requests
+RUN apk add --update python openssl \
+	&& wget http://bootstrap.pypa.io/get-pip.py \
+	&& python get-pip.py \
+	&& rm -rf /var/cache/apk/*
+
+RUN pip install --upgrade pyinotify requests
+
 COPY watch.py /watch.py
 CMD python watch.py
 
