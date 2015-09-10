@@ -4,7 +4,8 @@ MAINTAINER Ahmet Demir <ahmet2mir+github@gmail.com>
 RUN apk add --update openssl nginx
 RUN mkdir -p /webapps/sites /webapps/conf /webapps/logs \
 	         /webapps/cache /webapps/scripts /webapps/ssl \
-    && chown -R nginx:nginx /webapps
+    && chown -R nginx:nginx /webapps \
+    && chown -R nginx:nginx /var/lib/nginx
     
 COPY assets/scripts /webapps/scripts
 COPY assets/conf /webapps/conf/
