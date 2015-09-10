@@ -12,7 +12,10 @@ RUN chmod +x /webapps/scripts/* \
 	&& ln -s /webapps/scripts/domain.sh /usr/bin/domain \
 	&& ln -s /webapps/scripts/path.sh /usr/bin/path
 
+RUN rm -rf /var/cache/apk/*
+
 CMD ["/usr/sbin/nginx","-c","/webapps/conf/nginx.conf"]
 
 EXPOSE 80 443
 ENV SHELL /bin/bash
+
