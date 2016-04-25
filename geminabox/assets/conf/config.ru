@@ -13,7 +13,12 @@ if $username && $password
       def protected!
         unless authorized?
           response['WWW-Authenticate'] = %(Basic realm="Geminabox")
-          halt 401, "No pushing or deleting without auth.\n"
+          if ENV['PRIVATE'].to_s == 'true'
+            halt 401, "You have not access to this resource.\n"
+          else
+            halt 401, "No pushing or deleting without auth.\n"
+          end
+
         end
       end
 
@@ -23,12 +28,20 @@ if $username && $password
       end
     end
 
+    Geminabox::Server.before do
+      protected! if request.get?
+    end if ENV['PRIVATE'].to_s == 'true'
+
     Geminabox::Server.before '/upload' do
       protected!
     end
 
     Geminabox::Server.before do
       protected! if request.delete?
+    end
+
+Geminabox::Server.before do
+      protected! if request.get?
     end
 
     Geminabox::Server.before '/api/v1/gems' do
