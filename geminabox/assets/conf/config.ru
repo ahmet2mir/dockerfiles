@@ -18,23 +18,18 @@ if $username && $password
     end
 
     def authorized?
-      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
       @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [$username, $password]
     end
   end
-
-  Geminabox::Server.before do
-    protected! if request.get?
-  end if ENV['PRIVATE'].to_s == 'true'
 
   Geminabox::Server.before '/upload' do
     protected!
   end
 
   Geminabox::Server.before do
-    protected! if request.delete?
+    protected! if request.delete? || ENV['PRIVATE'].to_s == 'true'
   end
-
 
   Geminabox::Server.before '/api/v1/gems' do
     unless env['HTTP_AUTHORIZATION'] == 'API_KEY'
