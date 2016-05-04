@@ -34,6 +34,12 @@ If you mount data, when you stop, destroy your container and then run it, data a
 If you wan't to use different configuration for authentication, mount config folder containing your own config.ru
 Check [Geminabox Wiki](https://github.com/geminabox/geminabox/wiki/Http-Basic-Auth)
 
+### Make everything private with auth protection
+
+Use environment variable `PRIVATE`
+
+	PRIVATE: true
+
 ### Logs
 
 Output are in docker log collect 
