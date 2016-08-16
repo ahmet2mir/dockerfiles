@@ -17,7 +17,7 @@ function main() {
   then
     echo "Adding a path "$SERVER_NAME
 
-    mkdir /webapps/conf/$SERVER_NAME/
+    mkdir -p /webapps/conf/$SERVER_NAME/
 
     if [[ $SERVER_PATH == "_root" ]]
     then
@@ -55,7 +55,7 @@ function main() {
 
   fi
 
-  /usr/sbin/nginx -s reload
+  /usr/sbin/nginx -c /webapps/conf/nginx.conf -s reload
 
   exit 0
 }

@@ -18,7 +18,7 @@ function main() {
     /bin/sed 's,{{SERVER_NAME}},'"${SERVER_NAME}"',g' -i /webapps/conf/$SERVER_NAME.conf
 
     mv /webapps/conf/$SERVER_NAME.conf /webapps/sites/$SERVER_NAME.conf
-    mkdir /webapps/sites/$SERVER_NAME
+    mkdir -p /webapps/sites/$SERVER_NAME
     touch /webapps/sites/$SERVER_NAME/root
 
     cd /webapps/ssl 
@@ -33,7 +33,7 @@ function main() {
     rm -rf /webapps/sites/$SERVER_NAME
   fi
 
-  /usr/sbin/nginx -s reload
+  /usr/sbin/nginx -c /webapps/conf/nginx.conf -s reload
 
   exit 0
 }
