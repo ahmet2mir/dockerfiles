@@ -6,7 +6,7 @@ RUN apk add --update bash g++ gcc git libc-dev libffi-dev \
         python python-dev python3 python3-dev swig krb5 krb5-libs \
         krb5-dev curl
 RUN easy_install-2.7 pip && easy_install-3.6 pip
-RUN pip install --upgrade pip virtualenv gunicorn setuptools
+RUN pip install --upgrade pip virtualenv gunicorn setuptools tox
 RUN rm -rf /var/cache/apk/*
 RUN mkdir /apps
 
